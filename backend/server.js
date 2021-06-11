@@ -9,7 +9,6 @@ import morgan from "morgan"
 import productRoutes from "./routes/productRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import orderRoutes from "./routes/orderRoutes.js"
-import categoryRoutes from "./routes/categoryRoutes.js"
 
 dotenv.config()
 
@@ -26,7 +25,6 @@ app.use(express.json())
 app.use("/api/products", productRoutes)
 app.use("/api/users", userRoutes)
 app.use("/api/orders", orderRoutes)
-app.use("/api/category", categoryRoutes)
 
 const __dirname = path.resolve() //as we are using es6 js we have to mimic.
 //Node.js blocks anyone reading files from its directory so what we will do is that we will ask node.js to make upload file available by making it static file.

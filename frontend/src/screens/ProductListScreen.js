@@ -41,12 +41,7 @@ const ProductListScreen = ({ history, match }) => {
     image: "/images/playstation.jpg",
     description: "Sample Description",
     brand: "Sample Brand",
-    category: [
-      {
-        mainCategory: "sample Main Category",
-        subCategory: "sample Sub Category",
-      },
-    ],
+    category: "Sample Category",
     price: 0,
     countInStock: 0,
     rating: 0,
@@ -120,7 +115,7 @@ const ProductListScreen = ({ history, match }) => {
                   <td>{product._id}</td>
                   <td>{product.name}</td>
                   <td>${product.price}</td>
-                  <td>{product.category[0].mainCategory}</td>
+                  <td>{product.category}</td>
                   <td>{product.brand}</td>
                   <td>
                     <LinkContainer to={`/admin/products/${product._id}/edit`}>

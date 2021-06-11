@@ -23,10 +23,6 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
-  PRODUCT_SEARCH_REQUEST,
-  PRODUCT_SEARCH_SUCCESS,
-  PRODUCT_SEARCH_FAIL,
-  PRODUCT_SEARCH_RESET,
 } from "../constants/productContants"
 
 export const productListReducer = (state = { products: [] }, action) => {
@@ -46,25 +42,6 @@ export const productListReducer = (state = { products: [] }, action) => {
       return state
   }
 }
-
-export const productSearchReducer = (state = { products: [] }, action) => {
-  switch (action.type) {
-    case PRODUCT_SEARCH_REQUEST:
-      return { loading: true, products: [] }
-    case PRODUCT_SEARCH_SUCCESS:
-      return {
-        loading: false,
-        products: action.payload.products,
-      } // this will fetch the payload value from the productAction.js file.
-    case PRODUCT_SEARCH_FAIL:
-      return { loading: false, error: action.payload }
-    case PRODUCT_SEARCH_RESET:
-      return { loading: false, products: [] }
-    default:
-      return state
-  }
-}
-
 export const productDetailsReducer = (
   state = { product: { reviews: [] } },
   action

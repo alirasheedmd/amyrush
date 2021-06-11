@@ -26,11 +26,7 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route
-              render={({ history }) => (
-                <SearchBar className="search-bar" history={history} />
-              )}
-            />
+            <Route render={({ history }) => <SearchBar history={history} />} />
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
@@ -69,17 +65,6 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
-      <Navbar id="menu" variant="dark">
-        <Nav className="menu-links" inline>
-          {products.map((product) => (
-            <>
-              <Nav.Link href="">
-                {product.category.map((category) => category.mainCategory)}
-              </Nav.Link>
-            </>
-          ))}
-        </Nav>
       </Navbar>
     </header>
   )
