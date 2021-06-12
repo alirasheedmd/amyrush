@@ -1,17 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { LinkContainer } from "react-router-bootstrap"
 import { Container, Navbar, Nav, NavDropdown, Image } from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../actions/userActions"
 import { useHistory, Route } from "react-router-dom"
 import SearchBar from "./searchBar"
+import { listProductsCategoryList } from "../actions/productAction"
 
 const Header = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
-  const productList = useSelector((state) => state.productList)
-  const { products } = productList
+  const productCategoryList = useSelector((state) => state.productCategoryList)
+  const { categories } = productCategoryList
 
   const history = useHistory()
   const dispatch = useDispatch()
@@ -19,6 +20,9 @@ const Header = () => {
     dispatch(logout())
     history.push("/")
   }
+  useEffect(() => {
+    dispatch(listProductsCategoryList())
+  }, [dispatch])
 
   return (
     <header id="header">
@@ -75,7 +79,11 @@ const Header = () => {
         </Container>
       </Navbar>
       <Navbar className="menu" bg="dark" variant="dark" expand="lg">
-        <Nav></Nav>
+        <Nav>
+          {categories.map((category) => (
+            <Nav.Link key={category}>{category}</Nav.Link>
+          ))}
+        </Nav>
       </Navbar>
     </header>
   )

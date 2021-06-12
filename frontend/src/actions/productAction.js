@@ -20,34 +20,37 @@ import {
   PRODUCT_TOP_REQUEST,
   PRODUCT_TOP_SUCCESS,
   PRODUCT_TOP_FAIL,
+  PRODUCT_CATEGORY_REQUEST,
+  PRODUCT_CATEGORY_SUCCESS,
+  PRODUCT_CATEGORY_FAIL,
 } from "../constants/productContants"
 import axios from "axios"
 import { logout } from "../actions/userActions"
 
-export const listProducts = (keyword = "", pageNumber = "") => async (
-  dispatch
-) => {
-  try {
-    dispatch({ type: PRODUCT_LIST_REQUEST }) //first the action will fire off the request reducer
+export const listProducts =
+  (keyword = "", pageNumber = "") =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: PRODUCT_LIST_REQUEST }) //first the action will fire off the request reducer
 
-    const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
-    )
+      const { data } = await axios.get(
+        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      )
 
-    dispatch({
-      type: PRODUCT_LIST_SUCCESS, // this will fill in the payload with the fetched product data.
-      payload: data,
-    })
-  } catch (error) {
-    dispatch({
-      type: PRODUCT_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    })
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS, // this will fill in the payload with the fetched product data.
+        payload: data,
+      })
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
   }
-}
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST }) //first the action will fire off the request reducer
@@ -163,43 +166,41 @@ export const updateProduct = (product, id) => async (dispatch, getState) => {
   }
 }
 
-export const createProductReview = (review, id) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    dispatch({ type: PRODUCT_CREATE_REVIEW_REQUEST }) //first the action will fire off the request reducer
+export const createProductReview =
+  (review, id) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PRODUCT_CREATE_REVIEW_REQUEST }) //first the action will fire off the request reducer
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
+      const {
+        userLogin: { userInfo },
+      } = getState()
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
-      },
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+
+      await axios.post(`/api/products/${id}/review`, review, config)
+
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_SUCCESS,
+      })
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      if (message === "Not authorized, token failed") {
+        dispatch(logout())
+      }
+      dispatch({
+        type: PRODUCT_CREATE_REVIEW_FAIL,
+        payload: message,
+      })
     }
-
-    await axios.post(`/api/products/${id}/review`, review, config)
-
-    dispatch({
-      type: PRODUCT_CREATE_REVIEW_SUCCESS,
-    })
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message
-    if (message === "Not authorized, token failed") {
-      dispatch(logout())
-    }
-    dispatch({
-      type: PRODUCT_CREATE_REVIEW_FAIL,
-      payload: message,
-    })
   }
-}
 
 export const listTopProducts = () => async (dispatch) => {
   try {
@@ -214,6 +215,26 @@ export const listTopProducts = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PRODUCT_TOP_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+export const listProductsCategoryList = () => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_CATEGORY_REQUEST }) //first the action will fire off the request reducer
+
+    const { data } = await axios.get(`/api/products/productscategory`)
+
+    dispatch({
+      type: PRODUCT_CATEGORY_SUCCESS, // this will fill in the payload with the fetched product data.
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_CATEGORY_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
