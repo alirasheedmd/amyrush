@@ -60,3 +60,23 @@ h2 {
     font-size: 2.5vw;
   }
 }
+
+//========================Header======================//
+
+#header {
+  .logo {
+    width: 150px;
+  }
+  a {
+    color: black;
+  }
+  .search-botton {
+    padding: 100px;
+  }
+  .menu {
+    padding: 5px;
+    a {
+      color: white;
+    }
+  }
+}

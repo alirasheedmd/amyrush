@@ -166,6 +166,15 @@ const getTopProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({}).sort({ rating: -1 }).limit(3)
   res.json(products)
 })
+const getProductsCategory = asyncHandler(async (req, res) => {
+  const products = await Product.find({})
+  const categoryList = []
+  products.map((product) => {
+    categoryList.push(product.category)
+  })
+  const uniqueCategoryList = [...new Set(categoryList)]
+  res.json(uniqueCategoryList)
+})
 
 export {
   getProducts,
@@ -175,4 +184,5 @@ export {
   updateProduct,
   createReview,
   getTopProducts,
+  getProductsCategory,
 }

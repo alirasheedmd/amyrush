@@ -1,6 +1,6 @@
 import React from "react"
 import { LinkContainer } from "react-router-bootstrap"
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap"
+import { Container, Navbar, Nav, NavDropdown, Image } from "react-bootstrap"
 import { useSelector, useDispatch } from "react-redux"
 import { logout } from "../actions/userActions"
 import { useHistory, Route } from "react-router-dom"
@@ -10,6 +10,9 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
+  const productList = useSelector((state) => state.productList)
+  const { products } = productList
+
   const history = useHistory()
   const dispatch = useDispatch()
   const logoutHandler = () => {
@@ -18,11 +21,16 @@ const Header = () => {
   }
 
   return (
-    <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+    <header id="header">
+      <Navbar bg="light" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>Magwatt</Navbar.Brand>
+            <Navbar.Brand>
+              <Image
+                className="logo"
+                src="https://res.cloudinary.com/magwatt/image/upload/v1623513426/AmyRush_fckowm.png"
+              />
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -65,6 +73,9 @@ const Header = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+      </Navbar>
+      <Navbar className="menu" bg="dark" variant="dark" expand="lg">
+        <Nav></Nav>
       </Navbar>
     </header>
   )

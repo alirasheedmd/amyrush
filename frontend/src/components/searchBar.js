@@ -26,9 +26,6 @@ const SearchBar = ({ history }) => {
           }}
         />
       </Form.Group>
-      <Button type="submit" variant="outline-success" className="p-2">
-        Search
-      </Button>
     </Form>
   )
 }
