@@ -13,13 +13,14 @@ import { Link } from "react-router-dom"
 const HomeScreen = ({ match }) => {
   const pageNumber = match.params.pageNumber || 1
   const keyword = match.params.keyword
+  const type = match.params.type
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
   const { loading, products, pages, page, error } = productList
 
   useEffect(() => {
-    dispatch(listProducts(keyword, pageNumber)) // this will fireoff the productAction.js (listProduct that will fetch data)
+    dispatch(listProducts(type, keyword, pageNumber)) // this will fireoff the productAction.js (listProduct that will fetch data)
   }, [dispatch, keyword, pageNumber])
 
   return (

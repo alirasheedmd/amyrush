@@ -28,13 +28,13 @@ import axios from "axios"
 import { logout } from "../actions/userActions"
 
 export const listProducts =
-  (keyword = "", pageNumber = "") =>
+  (type = "", keyword = "", pageNumber = "") =>
   async (dispatch) => {
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST }) //first the action will fire off the request reducer
 
       const { data } = await axios.get(
-        `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+        `/api/products?type=${type}&keyword=${keyword}&pageNumber=${pageNumber}`
       )
 
       dispatch({

@@ -65,7 +65,7 @@ h2 {
 
 #header {
   .logo {
-    width: 150px;
+    width: 100px;
   }
   a {
     color: black;
@@ -74,9 +74,19 @@ h2 {
     padding: 100px;
   }
   .menu {
-    padding: 5px;
+    padding: 0px;
+    padding-left: 20px;
     a {
-      color: white;
+      color: #fff;
     }
+    a:hover {
+      color: #999;
+    }
+  }
+}
+
+#search {
+  .form-control {
+    border-radius: 25px;
   }
 }

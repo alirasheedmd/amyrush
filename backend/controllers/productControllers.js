@@ -70,22 +70,38 @@ const updateProduct = asyncHandler(async (req, res) => {
 const getProducts = asyncHandler(async (req, res) => {
   const pageSize = 4
   const page = Number(req.query.pageNumber) || 1
+  const type = req.query.type
 
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword, // we are using regex becuase when some one type ip we need iphone to come up
-          $options: "i",
-        },
-      }
-    : {}
+  if (type === "category") {
+    const keyword = req.query.keyword
+      ? {
+          category: req.query.keyword,
+        }
+      : {}
+    console.log(keyword)
+    const count = await Product.countDocuments({ ...keyword })
+    const products = await Product.find({ ...keyword })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1))
 
-  const count = await Product.countDocuments({ ...keyword })
-  const products = await Product.find({ ...keyword })
-    .limit(pageSize)
-    .skip(pageSize * (page - 1))
+    res.json({ products, page, pages: Math.ceil(count / pageSize) })
+  } else {
+    const keyword = req.query.keyword
+      ? {
+          name: {
+            $regex: req.query.keyword, // we are using regex becuase when some one type ip we need iphone to come up
+            $options: "i",
+          },
+        }
+      : {}
+    console.log(keyword)
+    const count = await Product.countDocuments({ ...keyword })
+    const products = await Product.find({ ...keyword })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1))
 
-  res.json({ products, page, pages: Math.ceil(count / pageSize) })
+    res.json({ products, page, pages: Math.ceil(count / pageSize) })
+  }
 })
 
 //@description Fetch a single product

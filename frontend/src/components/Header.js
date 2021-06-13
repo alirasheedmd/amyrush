@@ -26,8 +26,8 @@ const Header = () => {
 
   return (
     <header id="header">
-      <Navbar bg="light" variant="dark" expand="lg" collapseOnSelect>
-        <Container>
+      <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
+        <Container fluid>
           <LinkContainer to="/">
             <Navbar.Brand>
               <Image
@@ -81,7 +81,9 @@ const Header = () => {
       <Navbar className="menu" bg="dark" variant="dark" expand="lg">
         <Nav>
           {categories.map((category) => (
-            <Nav.Link key={category}>{category}</Nav.Link>
+            <Nav.Link href={`/search/category/${category}`} key={category}>
+              {category}
+            </Nav.Link>
           ))}
         </Nav>
       </Navbar>

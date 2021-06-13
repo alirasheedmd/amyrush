@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
-import { Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap"
+import {
+  Row,
+  Col,
+  Image,
+  ListGroup,
+  Card,
+  Button,
+  Form,
+  Container,
+} from "react-bootstrap"
 import Rating from "../components/Rating"
 import Message from "../components/Message"
 import {
@@ -17,10 +26,8 @@ const ProductScreen = ({ history, match }) => {
   const { loading, error, product } = productDetails
 
   const productReviewCreate = useSelector((state) => state.productReviewCreate)
-  const {
-    error: errorReviewCreate,
-    success: successReviewCreate,
-  } = productReviewCreate
+  const { error: errorReviewCreate, success: successReviewCreate } =
+    productReviewCreate
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -52,7 +59,7 @@ const ProductScreen = ({ history, match }) => {
   }
 
   return (
-    <>
+    <Container>
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
@@ -199,7 +206,7 @@ const ProductScreen = ({ history, match }) => {
           )}
         </>
       )}
-    </>
+    </Container>
   )
 }
 

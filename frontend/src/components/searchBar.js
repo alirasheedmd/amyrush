@@ -13,13 +13,13 @@ const SearchBar = ({ history }) => {
   }
 
   return (
-    <Form inline onSubmit={submitHandler}>
+    <Form id="search" inline onSubmit={submitHandler}>
       <Form.Group controlId="searchBox">
         <Form.Control
           type="text"
           name="search"
           value={keyword}
-          className="mr-sm-2 ml-sm-5"
+          className="mr-sm-2 ml-sm-5 serach-input"
           placeholder="Search Products..."
           onChange={(e) => {
             setKeyword(e.target.value)

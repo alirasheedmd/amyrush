@@ -56,7 +56,7 @@ const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/products/${createdProduct._id}/edit`)
     } else {
-      dispatch(listProducts("", pageNumber))
+      dispatch(listProducts("", "", pageNumber))
     }
   }, [
     dispatch,
