@@ -23,8 +23,8 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <main className="py-3">
-        <Container fluid>
+      <main id="main" className="py-3">
+        <Container className="body">
           <Route path="/login" component={LoginScreen} />
           <Route path="/register" component={RegisterScreen} exact />
           <Route path="/profile" component={ProfileScreen} />

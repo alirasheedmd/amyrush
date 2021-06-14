@@ -27,7 +27,7 @@ const Header = () => {
   return (
     <header id="header">
       <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
-        <Container fluid>
+        <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
               <Image
@@ -78,14 +78,16 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Navbar className="menu" bg="dark" variant="dark" expand="lg">
-        <Nav>
-          {categories.map((category) => (
-            <Nav.Link href={`/search/category/${category}`} key={category}>
-              {category}
-            </Nav.Link>
-          ))}
-        </Nav>
+      <Navbar className="menu" expand="lg">
+        <Container>
+          <Nav>
+            {categories.map((category) => (
+              <Nav.Link href={`/search/category/${category}`} key={category}>
+                {category}
+              </Nav.Link>
+            ))}
+          </Nav>
+        </Container>
       </Navbar>
     </header>
   )

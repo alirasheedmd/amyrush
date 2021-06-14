@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux" // useSelector will display the products on the screen
 import Product from "../components/Product"
-import { Row, Col } from "react-bootstrap"
+import { Row, Col, Container, Image } from "react-bootstrap"
 import { listProducts } from "../actions/productAction"
 import Message from "../components/Message"
 import Loader from "../components/Loader"
@@ -26,13 +26,6 @@ const HomeScreen = ({ match }) => {
   return (
     <>
       <Meta />
-      {!keyword ? (
-        <ProductCarousel />
-      ) : (
-        <Link to="/" className="btn btn-light">
-          Go Back
-        </Link>
-      )}
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
