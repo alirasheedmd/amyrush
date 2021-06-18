@@ -78,7 +78,7 @@ const getProducts = asyncHandler(async (req, res) => {
           category: req.query.keyword,
         }
       : {}
-    console.log(keyword)
+
     const count = await Product.countDocuments({ ...keyword })
     const products = await Product.find({ ...keyword })
       .limit(pageSize)
@@ -94,7 +94,7 @@ const getProducts = asyncHandler(async (req, res) => {
           },
         }
       : {}
-    console.log(keyword)
+
     const count = await Product.countDocuments({ ...keyword })
     const products = await Product.find({ ...keyword })
       .limit(pageSize)
