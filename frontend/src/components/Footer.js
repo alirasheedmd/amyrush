@@ -21,22 +21,22 @@ const Footer = () => {
           <div className="item">
             <i className="footer-icon fas fa-shopping-bag"></i>
             <br />
-            <span className="item-text">Home</span>
+            <span className="item-text">Shop</span>
           </div>
           <div className="item">
             <i className="footer-icon fas fa-tag"></i>
             <br />
-            <span className="item-text">Home</span>
+            <span className="item-text">Offers</span>
           </div>
           <div className="item">
             <i className=" footer-icon far fa-user-circle"></i>
             <br />
-            <span className="item-text">Home</span>
+            <span className="item-text">Me</span>
           </div>
           <div className="item">
             <i className=" footer-icon fas fa-store"></i>
             <br />
-            <span className="item-text">Home</span>
+            <span className="item-text">Stores</span>
           </div>
         </div>
       </footer>

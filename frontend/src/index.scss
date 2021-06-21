@@ -47,6 +47,15 @@ h2 {
 //========================Header======================//
 
 #header {
+  .main-header {
+    @include small() {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 10;
+    }
+  }
   .main-menu {
     @include small() {
       display: none;
@@ -91,10 +100,14 @@ h2 {
   .menu-mobile {
     display: none;
     @include small() {
+      position: fixed;
+      top: 125px;
+      right: 0;
+      left: 0;
+      z-index: 10;
       max-height: 40px;
       border-bottom: solid #ddd 1px;
       background: #fffafa;
-      max-width: 100vw;
       display: block;
       & {
         .category-list {
@@ -158,9 +171,12 @@ h2 {
         display: flex;
         position: fixed;
         bottom: 0px;
+        right: 0;
+        left: 0;
         align-items: center;
         justify-content: space-between;
         .item {
+          text-align: center;
           padding: 20px;
           .footer-icon {
             font-size: 25px;
@@ -171,6 +187,16 @@ h2 {
           }
         }
       }
+    }
+  }
+}
+
+.product-page {
+  @include small() {
+    margin-top: 150px;
+    margin-bottom: 100px;
+    h1 {
+      font-size: 20px;
     }
   }
 }
