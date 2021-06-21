@@ -24,7 +24,7 @@ const HomeScreen = ({ match }) => {
   }, [dispatch, keyword, pageNumber])
 
   return (
-    <>
+    <div className="product-page">
       <Meta />
       <h1>Latest Products</h1>
       {loading ? (
@@ -47,7 +47,7 @@ const HomeScreen = ({ match }) => {
           />
         </>
       )}
-    </>
+    </div>
   )
 }
 

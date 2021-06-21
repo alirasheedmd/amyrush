@@ -26,7 +26,13 @@ const Header = () => {
 
   return (
     <header id="header">
-      <Navbar bg="light" variant="light" expand="lg" collapseOnSelect>
+      <Navbar
+        bg="light"
+        variant="light"
+        expand="lg"
+        collapseOnSelect
+        className="main-header"
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
@@ -36,10 +42,13 @@ const Header = () => {
               />
             </Navbar.Brand>
           </LinkContainer>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Route render={({ history }) => <SearchBar history={history} />} />
+          <Navbar.Toggle
+            className="main-menu"
+            aria-controls="basic-navbar-nav"
+          />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Route render={({ history }) => <SearchBar history={history} />} />
-            <Nav className="ml-auto">
+            <Nav className="ml-auto ">
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i>Cart
@@ -89,6 +98,15 @@ const Header = () => {
           </Nav>
         </Container>
       </Navbar>
+      <div className="menu-mobile">
+        <ul className="category-list">
+          {categories.map((category) => (
+            <li className="category-item" key={category}>
+              <a href={`/search/category/${category}`}>{category}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </header>
   )
 }

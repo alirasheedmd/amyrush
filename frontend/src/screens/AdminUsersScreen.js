@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Button, Table } from "react-bootstrap"
+import { Button, Table, Row, Col } from "react-bootstrap"
 import { deleteUser, getAllUsers } from "../actions/userActions"
 import Loader from "../components/Loader"
 import { LinkContainer } from "react-router-bootstrap"
@@ -32,6 +32,11 @@ const AdminUsersScreen = ({ history }) => {
 
   return (
     <>
+      <Row className="align-items-center">
+        <Col>
+          <h1>Users</h1>
+        </Col>
+      </Row>
       {loading ? (
         <Loader />
       ) : (
