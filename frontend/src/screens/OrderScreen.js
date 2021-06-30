@@ -208,6 +208,7 @@ const OrderScreen = ({ match, history }) => {
                     <PayPalButton
                       amount={order.totalPrice}
                       onSuccess={successPaymentHandler}
+                      className="zindex"
                     />
                   )}
                 </ListGroup.Item>
