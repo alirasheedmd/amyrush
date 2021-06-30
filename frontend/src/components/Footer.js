@@ -1,5 +1,6 @@
 import React from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -14,29 +15,39 @@ const Footer = () => {
       <footer id="small-screen">
         <div className="footer-icons-list">
           <div className="item">
-            <i className="footer-icon fas fa-home"></i>
-            <br />
-            <span className="item-text">Home</span>
+            <Link to="/">
+              <i className="footer-icon fas fa-home"></i>
+              <br />
+              <span className="item-text">Home</span>
+            </Link>
           </div>
           <div className="item">
-            <i className="footer-icon fas fa-shopping-bag"></i>
-            <br />
-            <span className="item-text">Shop</span>
+            <Link to="/cart">
+              <i className="footer-icon fas fa-shopping-bag"></i>
+              <br />
+              <span className="item-text">Shop</span>
+            </Link>
           </div>
           <div className="item">
-            <i className="footer-icon fas fa-tag"></i>
-            <br />
-            <span className="item-text">Offers</span>
+            <Link to="/offer">
+              <i className="footer-icon fas fa-tag"></i>
+              <br />
+              <span className="item-text">Offers</span>
+            </Link>
           </div>
           <div className="item">
-            <i className=" footer-icon far fa-user-circle"></i>
-            <br />
-            <span className="item-text">Me</span>
+            <Link to="/profile">
+              <i className=" footer-icon far fa-user-circle"></i>
+              <br />
+              <span className="item-text">Me</span>
+            </Link>
           </div>
           <div className="item">
-            <i className=" footer-icon fas fa-store"></i>
-            <br />
-            <span className="item-text">Stores</span>
+            <Link to="/stores">
+              <i className=" footer-icon fas fa-store"></i>
+              <br />
+              <span className="item-text">Stores</span>
+            </Link>
           </div>
         </div>
       </footer>
