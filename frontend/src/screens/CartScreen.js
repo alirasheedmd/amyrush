@@ -27,9 +27,9 @@ const CartScreen = ({ match, location, history }) => {
   }
 
   return (
-    <Row>
+    <Row className="product-page">
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1 className="py-3">Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <h3>
             Your cart is empty<Link to="/"> Go Back</Link>
